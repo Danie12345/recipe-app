@@ -1,14 +1,14 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-## Blog App
+## Recipe App
 
-> A classic blog app made with Rails. This is a fully functional website that shows a list of the authors. For each author is shows a list of their posts and empowers readers to interact with them by adding comments and liking posts.
+> The Recipe app keeps track of all your recipes and ingredients. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
 
 ## Built With
 
 - Ruby on Rails
 - PostgreSQL
-- devise / devise-jwt - for authentication
+- devise - for authentication
 - cancancan - for authorization
 
 ### Getting Started
@@ -27,8 +27,8 @@ To get a local copy up and running follow these simple steps:
 - Type these commands into the terminal:
 
 ```
-git clone git@github.com:Danie12345/blogonrails.git
-cd blogonrails
+git clone https://github.com/Danie12345/recipe-app.git
+cd recipe-app
 bundle install
 ```
 
@@ -78,11 +78,10 @@ rspec spec -f doc lib
 
 ## Collaborator
 
-👤 **Roberto A. Baños Alvarez**
+👤 **Mahmoud Makhlouf**
 
-- GitHub: [@rbanos-mv](https://github.com/rbanos-mv)
-- Twitter: [@RobertoBanosMV](https://twitter.com/RobertoBanosMV)
-- LinkedIn: [Roberto A Baños Alvarez](https://linkedin.com/in/roberto-a-baños-alvarez-500766234)
+- GitHub: [@devMahmoud](https://github.com/devMahmoud)
+- LinkedIn: [Mahmoud Makhlouf](https://www.linkedin.com/in/mahmoud-abdelkader-makhlouf/)
 
 ---
 
@@ -90,7 +89,7 @@ rspec spec -f doc lib
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Danie12345/blogonrails/issues).
+Feel free to check the [issues page](https://github.com/Danie12345/recipe-app/issues).
 
 ## Show your support
 
