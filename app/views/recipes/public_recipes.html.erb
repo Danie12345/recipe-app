@@ -1,1 +1,6 @@
 <h1>Public Recipes</h1>
+<% @public_recipes.each do |recipe| %>
+  <%= link_to user_recipe_path(recipe.user.id, recipe.id) do %>
+    <%= recipe.name %>
+  <% end %>
+<% end %>

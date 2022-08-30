@@ -1,0 +1,6 @@
+<h1>user: <%= @user.name %></h1>
+Recipes: <% @recipes.each do |recipe| %>
+  <%= link_to user_recipe_path(recipe.user.id, recipe.id) do %>
+    <%= recipe.name%>
+  <%end%>
+<%end%>
