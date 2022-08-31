@@ -28,4 +28,16 @@ class FoodsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @client = current_user
+    @food = Food.find(params[:id])
+    authorize! :destroy, @food
+    @food.destroy
+    if current_page?(user_food_path(@food.author_id, @food.id))
+      redirect_to user_foods_path(@food.author_id)
+    else
+      redirect_to request.referer
+    end
+  end
 end
