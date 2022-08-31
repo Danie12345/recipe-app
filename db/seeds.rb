@@ -18,7 +18,7 @@ food2 = Food.create(name: "Pineapple", measurement_unit: 'kg', price: 2, quantit
 food3 = Food.create(name: "Watermelon", measurement_unit: 'kg', price: 5, quantity: 1, user_id: user2.id)
 food4 = Food.create(name: "Banana", measurement_unit: 'kg', price: 1.1, quantity: 6, user_id: user2.id)
 
-# RecipesFoods.create(quantity: 1, recipe_id: recipe1.id, food_id: food1.id)
-# RecipesFoods.create(quantity: 2, recipe_id: recipe2.id, food_id: food2.id)
-# RecipesFoods.create(quantity: 4, recipe_id: recipe2.id, food_id: food2.id)
-# RecipesFoods.create(quantity: 1, recipe_id: recipe2.id, food_id: food2.id)
+RecipeFood.create(quantity: 1, recipe_id: recipe1.id, food_id: food1.id)
+RecipeFood.create(quantity: 2, recipe_id: recipe2.id, food_id: food2.id)
+RecipeFood.create(quantity: 4, recipe_id: recipe2.id, food_id: food2.id)
+RecipeFood.create(quantity: 1, recipe_id: recipe2.id, food_id: food2.id)
