@@ -3,6 +3,10 @@ class FoodsController < ApplicationController
     @foods = Food.all
   end
 
+  def show
+    @food = Food.find(params[:id]).includes(:recipes_foods)
+  end
+
   def new
     @client = current_user
     food = Food.new
