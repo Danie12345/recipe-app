@@ -8,6 +8,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def destroy
+    Recipe.destroy params[:id]
+    redirect_to user_recipes_url(user_id: params[:user_id])
+  end
+
   def public_recipes
     @public_recipes = Recipe.where(public: true).order(created_at: :desc)
   end
