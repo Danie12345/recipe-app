@@ -1,1 +1,21 @@
 <h1>Public Recipes</h1>
+<% @public_recipes.each do |recipe| %>
+  <div class="recipe-card">
+    <div class="recipe-title-container">
+      <%= link_to user_recipe_path(recipe.user.id, recipe.id) do %>
+        <h3 class="recipe-title">
+          <%= recipe.name %>
+        </h3>
+      <%end%>
+      <p>By: <%= recipe.user.name %> </p>
+    </div>
+    <div class="public-recipes-counters">
+      <p>
+        Total food items: N/A
+      </p>
+      <p>
+        Total price: N/A
+      </p>
+    </div>
+  </div>
+<% end %>
