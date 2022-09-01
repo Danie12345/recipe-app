@@ -12,8 +12,7 @@ class FoodsController < ApplicationController
     @total_cost = 0
     @filtered.each do |food, recipefood|
       difference = food.quantity - recipefood.quantity
-      next unless difference.negative?
-
+      next unless difference < 0
       price = -difference * food.price
       @total_cost += price
       @data[food.name] = { difference: -difference, price: }
