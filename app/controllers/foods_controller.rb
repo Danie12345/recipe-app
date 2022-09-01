@@ -1,11 +1,6 @@
 class FoodsController < ApplicationController
   def index
-    @client = current_user
-    @foods = @client.foods
-    @data = {}
-    @foods.each do |food|
-      @data[food.name] = { measurement_unit: food.measurement_unit, price: food.price, id: food.id }
-    end
+    @foods = Food.all
   end
 
   def list
@@ -58,11 +53,12 @@ class FoodsController < ApplicationController
   def destroy
     @client = current_user
     @food = Food.find(params[:id])
-    @recipefoods = RecipeFood.where(food_id: @food)
-    # authorize! :destroy, @recipefoods
-    # authorize! :destroy, @food
-    @recipefoods.destroy
+    authorize! :destroy, @food
     @food.destroy
-    redirect_to request.referer
+    if current_page?(user_food_path(@food.author_id, @food.id))
+      redirect_to user_foods_path(@food.author_id)
+    else
+      redirect_to request.referer
+    end
   end
 end
