@@ -1,5 +1,5 @@
 <h1>Public Recipes</h1>
-<% @public_recipes.each_with_index do |recipe, index| %>
+<% @public_recipes.each do |recipe| %>
   <div class="recipe-card">
     <div class="recipe-title-container">
       <%= link_to user_recipe_path(recipe.user.id, recipe.id) do %>
