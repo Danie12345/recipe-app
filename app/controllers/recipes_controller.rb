@@ -39,9 +39,8 @@ class RecipesController < ApplicationController
       @total_cost = 0
       @filtered.each do |food, recipefood|
         @total_cost += food.price * recipefood.quantity
-        
       end
-      @data[recipe.name] = { cost: @total_cost}
+      @data[recipe.name] = { cost: @total_cost }
     end
   end
 
