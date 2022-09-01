@@ -40,11 +40,10 @@ class FoodsController < ApplicationController
       format.html do
         if @food.save
           flash[:success] = 'Food added successfully!'
-          redirect_to "/inventory"
         else
           flash.now[:error] = 'Food could not be added!'
-          redirect_to "/inventory"
         end
+        redirect_to '/inventory'
       end
     end
   end
