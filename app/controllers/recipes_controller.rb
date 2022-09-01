@@ -8,9 +8,25 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def new
+    @user = current_user
+    @recipe = Recipe.new
+  end
+
   def destroy
     current_user.recipes.find(params[:id]).destroy
     redirect_to user_recipes_url(user_id: params[:user_id])
+  end
+
+  def create
+    @recipe = current_user.recipes.new(recipe_params)
+
+    if @recipe.save
+      redirect_to user_recipes_path,
+                  flash: { success: "#{@recipe.name} has been successfully created!" }
+    else
+      redirect_to new_recipe_path, flash: { error: @recipe.errors.full_messages }
+    end
   end
 
   def public_recipes
@@ -27,5 +43,9 @@ class RecipesController < ApplicationController
       end
       @data[recipe.name] = { cost: @total_cost}
     end
+  end
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
