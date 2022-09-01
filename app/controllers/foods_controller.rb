@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
   def index
     @client = current_user
-    @foods = @client.foods
+    @foods = @client.foods.order(created_at: :asc)
     @data = {}
     @foods.each do |food|
       @data[food.name] = { measurement_unit: food.measurement_unit, price: food.price, id: food.id }
@@ -30,25 +30,20 @@ class FoodsController < ApplicationController
 
   def new
     @client = current_user
-    food = Food.new
-    respond_to do |format|
-      format.html { render :new, locals: { food: } }
-    end
+    @food = Food.new
   end
 
   def create
     @client = current_user
-    allparams = params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
-    allparams['user_id'] = @client.id
-    food = Food.new(allparams)
+    @food = Food.new(food_params)
     respond_to do |format|
       format.html do
-        if food.save
+        if @food.save
           flash[:success] = 'Food added successfully!'
-          redirect_to user_foods_path(user_id: @client.id)
+          redirect_to "/inventory"
         else
-          flash.now[:error] = 'Error: Food could not be added!'
-          render :new, locals: { food: }
+          flash.now[:error] = 'Food could not be added!'
+          redirect_to "/inventory"
         end
       end
     end
@@ -60,5 +55,9 @@ class FoodsController < ApplicationController
     # authorize! :destroy, @food
     @food.destroy
     redirect_to request.referer
+  end
+
+  def food_params
+    params.permit(:name, :measurement_unit, :price, :quantity, :user_id)
   end
 end
