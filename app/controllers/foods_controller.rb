@@ -61,7 +61,7 @@ class FoodsController < ApplicationController
     @recipefoods = RecipeFood.where(food_id: @food)
     # authorize! :destroy, @recipefoods
     # authorize! :destroy, @food
-    @recipefoods.destroy
+    @recipefoods.destroy_all
     @food.destroy
     redirect_to request.referer
   end
