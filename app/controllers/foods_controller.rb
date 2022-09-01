@@ -9,8 +9,7 @@ class FoodsController < ApplicationController
   end
 
   def list
-    @recipefoods = RecipeFood.all
-    @foods = current_user.foods.where(id: @recipefoods).order(:id)
+    @foods = current_user.foods.order(:id)
     @recipefoods = RecipeFood.where(food_id: @foods)
     @filtered = @foods.zip(@recipefoods).to_h
     @data = {}
