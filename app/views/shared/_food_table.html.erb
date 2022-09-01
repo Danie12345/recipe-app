@@ -1,0 +1,17 @@
+<table>
+  <% case type %>
+  <% when 'shopping' %>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+    <% @data.each do |name, vals| %>
+      <tr>
+        <td><%= name %></td>
+        <td><%= vals[:difference] %></td>
+        <td><%= vals[:price] %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
