@@ -1,19 +1,24 @@
 <h1><%= @recipe.name %></h1>
 <div class="recipe-info-container">
   <div class="recipe-left-container">
-    <p>Preparation time: <%= @recipe.preparation_time %></p>
-    <p>Cooking time: <%= @recipe.cooking_time %></p>
+    <p>Preparation time: <%= @recipe.preparation_time %> hours</p>
+    <p>Cooking time: <%= @recipe.cooking_time %> hours</p>
     <p>Steps: <%= @recipe.description %></p>
-    <%= button_to 'Generate shopping list', method: :get %>
+    <%= button_to 'Generate shopping list', general_shopping_list_url(), method: :get %>
   </div>
 
   <div class="recipe-right-container">
     <% if @recipe.public %>
-      <%= check_box_tag(:public) %>
-      <%= label_tag(:public, "Public") %>
+      <div>
+        <%= check_box_tag(:public) %>
+        <%= label_tag(:public, "Public") %>
+      </div>
     <% else %>
-      <%= check_box_tag(:public) %>
-      <%= label_tag(:public, "private") %>
+      <div>
+        <%= check_box_tag(:public) %>
+        <%= label_tag(:public, "private") %>
+      </div>
     <% end %>
+    <%= button_to 'Add ingredient', method: :get %>
   </div>
 </div>

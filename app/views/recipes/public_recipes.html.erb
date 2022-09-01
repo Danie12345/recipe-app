@@ -1,5 +1,5 @@
 <h1>Public Recipes</h1>
-<% @public_recipes.each do |recipe| %>
+<% @public_recipes.each_with_index do |recipe, index| %>
   <div class="recipe-card">
     <div class="recipe-title-container">
       <%= link_to user_recipe_path(recipe.user.id, recipe.id) do %>
@@ -11,10 +11,10 @@
     </div>
     <div class="public-recipes-counters">
       <p>
-        Total food items: N/A
+        Total food items: <%= recipe.foods.length %>
       </p>
       <p>
-        Total price: N/A
+        Total price: $<%= @data[recipe.name][:cost] %>
       </p>
     </div>
   </div>
