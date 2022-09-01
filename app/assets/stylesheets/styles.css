@@ -11,3 +11,24 @@ a {
   padding: 1rem;
   margin-bottom: 1rem;
 }
+
+.recipe-info-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipe-right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.new-recipe-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-recipe-form input {
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+}

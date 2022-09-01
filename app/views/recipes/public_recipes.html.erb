@@ -11,10 +11,10 @@
     </div>
     <div class="public-recipes-counters">
       <p>
-        Total food items: N/A
+        Total food items: <%= recipe.foods.length %>
       </p>
       <p>
-        Total price: N/A
+        Total price: $<%= @data[recipe.name][:cost] %>
       </p>
     </div>
   </div>

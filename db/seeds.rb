@@ -9,9 +9,9 @@
 user1 = User.create(name: "Mahmoud")
 user2 = User.create(name: "Daniel")
 
-recipe1 = Recipe.create(name: "Star Wars", preparation_time: 2.hours, cooking_time: 1.hours, description: "The star wars recipe description", public: true, user_id: user1.id)
-recipe2 = Recipe.create(name: "Apple pie", preparation_time: 2.hours, cooking_time: 1.hours, description: "The apple pie recipe description", public: true, user_id: user1.id)
-recipe3 = Recipe.create(name: "Other Star Wars", preparation_time: 3.hours, cooking_time: 2.hours, description: "The other star wars recipe description", public: false, user_id: user2.id)
+recipe1 = Recipe.create(name: "Star Wars", preparation_time: 2.5, cooking_time: 1, description: "The star wars recipe description", public: true, user_id: user1.id)
+recipe2 = Recipe.create(name: "Apple pie", preparation_time: 2, cooking_time: 1, description: "The apple pie recipe description", public: true, user_id: user1.id)
+recipe3 = Recipe.create(name: "Other Star Wars", preparation_time: 3, cooking_time: 2, description: "The other star wars recipe description", public: false, user_id: user2.id)
 
 food1 = Food.create(name: "Apple", measurement_unit: 'kg', price: 2.5, quantity: 4, user_id: user1.id)
 food2 = Food.create(name: "Pineapple", measurement_unit: 'kg', price: 2, quantity: 1, user_id: user2.id)
@@ -24,8 +24,8 @@ food8 = Food.create(name: "Raisin", measurement_unit: 'kg', price: 2.4, quantity
 
 RecipeFood.create(quantity: 1, recipe_id: recipe1.id, food_id: food1.id)
 RecipeFood.create(quantity: 2, recipe_id: recipe2.id, food_id: food2.id)
-RecipeFood.create(quantity: 4, recipe_id: recipe2.id, food_id: food2.id)
-RecipeFood.create(quantity: 1, recipe_id: recipe2.id, food_id: food2.id)
+RecipeFood.create(quantity: 4, recipe_id: recipe2.id, food_id: food3.id)
+RecipeFood.create(quantity: 1, recipe_id: recipe2.id, food_id: food4.id)
 RecipeFood.create(quantity: 29, recipe_id: recipe1.id, food_id: food5.id)
 RecipeFood.create(quantity: 16, recipe_id: recipe1.id, food_id: food6.id)
 RecipeFood.create(quantity: 17, recipe_id: recipe1.id, food_id: food7.id)
