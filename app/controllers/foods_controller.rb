@@ -7,20 +7,20 @@ class FoodsController < ApplicationController
     @recipefoods = RecipeFood.all
     @foods = current_user.foods.where(id: @recipefoods).order(:id)
     @recipefoods = RecipeFood.where(food_id: @foods)
-    @filtered = Hash[@foods.zip(@recipefoods)]
+    @filtered = @foods.zip(@recipefoods).to_h
     @data = {}
     @total_cost = 0
     @filtered.each do |food, recipefood|
       difference = food.quantity - recipefood.quantity
-      if difference < 0
-        price = -difference*food.price
-        @total_cost += price
-        @data[food.name] = { difference: -difference, price: price }
-      end
+      next unless difference.negative?
+
+      price = -difference * food.price
+      @total_cost += price
+      @data[food.name] = { difference: -difference, price: }
     end
-    
+
     respond_to do |format|
-      format.html { render :template => "foods/list", :locals => { :foods => @foods } }
+      format.html { render template: 'foods/list', locals: { foods: @foods } }
     end
   end
 
