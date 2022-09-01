@@ -15,5 +15,17 @@ class RecipesController < ApplicationController
 
   def public_recipes
     @public_recipes = Recipe.where(public: true).order(created_at: :desc)
+    @data = {}
+    @public_recipes.each do |recipe|
+      @recipefoods = RecipeFood.where(recipe_id: recipe.id)
+      @foods = Food.where(id: @recipefoods).order(:id)
+      @filtered = @foods.zip(@recipefoods).to_h
+      @total_cost = 0
+      @filtered.each do |food, recipefood|
+        @total_cost += food.price * recipefood.quantity
+        
+      end
+      @data[recipe.name] = { cost: @total_cost}
+    end
   end
 end
