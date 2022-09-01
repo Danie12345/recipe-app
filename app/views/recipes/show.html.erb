@@ -8,17 +8,10 @@
   </div>
 
   <div class="recipe-right-container">
-    <% if @recipe.public %>
-      <div>
-        <%= check_box_tag(:public) %>
-        <%= label_tag(:public, "Public") %>
-      </div>
-    <% else %>
-      <div>
-        <%= check_box_tag(:public) %>
-        <%= label_tag(:public, "private") %>
-      </div>
-    <% end %>
+    <div>
+      <label for="public">Public</label>
+      <input type="checkbox" id="public" <%= 'checked' if @recipe.public %> disabled>
+    </div>
     <%= button_to 'Add ingredient', method: :get %>
   </div>
 </div>
