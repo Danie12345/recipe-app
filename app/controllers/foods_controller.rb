@@ -57,10 +57,7 @@ class FoodsController < ApplicationController
   def destroy
     @client = current_user
     @food = Food.find(params[:id])
-    @recipefoods = RecipeFood.where(food_id: @food)
-    # authorize! :destroy, @recipefoods
     # authorize! :destroy, @food
-    @recipefoods.destroy_all
     @food.destroy
     redirect_to request.referer
   end
