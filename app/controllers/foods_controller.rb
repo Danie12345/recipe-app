@@ -1,6 +1,11 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Food.all
+    @client = current_user
+    @foods = @client.foods
+    @data = {}
+    @foods.each do |food|
+      @data[food.name] = { measurement_unit: food.measurement_unit, price: food.price, id: food.id }
+    end
   end
 
   def list
