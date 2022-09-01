@@ -1,13 +1,13 @@
 <div>
-  <div>
-    <span>
+  <div class="shopping-stats">
+    <span class="shopping-items">
       Amount of food items to buy: <%= @data.size %>
     </span>
-    <span>
-      Total cost of food items: <%= @total_cost %>
+    <span class="shopping-cost">
+      Total cost of food items: $<%= @total_cost %>
     </span>
   </div>
-  <div>
+  <div class="shopping-table">
     <%= render "shared/food_table", type: 'shopping' %>
   </div>
 </div>
