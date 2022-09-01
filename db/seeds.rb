@@ -24,8 +24,8 @@ food8 = Food.create(name: "Raisin", measurement_unit: 'kg', price: 2.4, quantity
 
 RecipeFood.create(quantity: 1, recipe_id: recipe1.id, food_id: food1.id)
 RecipeFood.create(quantity: 2, recipe_id: recipe2.id, food_id: food2.id)
-RecipeFood.create(quantity: 4, recipe_id: recipe2.id, food_id: food2.id)
-RecipeFood.create(quantity: 1, recipe_id: recipe2.id, food_id: food2.id)
+RecipeFood.create(quantity: 4, recipe_id: recipe2.id, food_id: food3.id)
+RecipeFood.create(quantity: 1, recipe_id: recipe2.id, food_id: food4.id)
 RecipeFood.create(quantity: 29, recipe_id: recipe1.id, food_id: food5.id)
 RecipeFood.create(quantity: 16, recipe_id: recipe1.id, food_id: food6.id)
 RecipeFood.create(quantity: 17, recipe_id: recipe1.id, food_id: food7.id)
