@@ -1,0 +1,23 @@
+<%= form_with model: @food, url: user_foods_path(@client.id), method: :post do |f| %>
+  <div class="food-new-form">
+    <div class="food-new-food">
+      <%= f.label "Food" %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="food-new-measurement_unit">
+      <%= f.label "Measurement Unit" %>
+      <%= f.text_field :measurement_unit %>
+    </div>
+    <div class="food-new-unit_price">
+      <%= f.label "Unit Price" %>
+      $<%= f.number_field :price, in: 0.1..10000.0, step: 0.01 %>
+    </div>
+    <div class="food-new-quantity">
+      <%= f.label "Quantity" %>
+      <%= f.number_field :quantity, in: 1.0..500.0, step: 0.05 %>
+    </div>
+    <div class="food-new-submit">
+      <%= f.submit 'Add Food' %>
+    </div>
+  </div>
+<% end %>

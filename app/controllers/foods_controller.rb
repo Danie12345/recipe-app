@@ -1,11 +1,15 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Food.all
+    @client = current_user
+    @foods = @client.foods.order(created_at: :asc)
+    @data = {}
+    @foods.each do |food|
+      @data[food.name] = { measurement_unit: food.measurement_unit, price: food.price, id: food.id }
+    end
   end
 
   def list
-    @recipefoods = RecipeFood.all
-    @foods = current_user.foods.where(id: @recipefoods).order(:id)
+    @foods = current_user.foods.order(:id)
     @recipefoods = RecipeFood.where(food_id: @foods)
     @filtered = @foods.zip(@recipefoods).to_h
     @data = {}
@@ -26,26 +30,20 @@ class FoodsController < ApplicationController
 
   def new
     @client = current_user
-    food = Food.new
-    respond_to do |format|
-      format.html { render :new, locals: { food: } }
-    end
+    @food = Food.new
   end
 
   def create
     @client = current_user
-    allparams = params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
-    allparams['user_id'] = @client.id
-    food = Food.new(allparams)
+    @food = Food.new(food_params)
     respond_to do |format|
       format.html do
-        if food.save
+        if @food.save
           flash[:success] = 'Food added successfully!'
-          redirect_to user_foods_path(user_id: @client.id)
         else
-          flash.now[:error] = 'Error: Food could not be added!'
-          render :new, locals: { food: }
+          flash.now[:error] = 'Food could not be added!'
         end
+        redirect_to '/inventory'
       end
     end
   end
@@ -53,12 +51,12 @@ class FoodsController < ApplicationController
   def destroy
     @client = current_user
     @food = Food.find(params[:id])
-    authorize! :destroy, @food
+    # authorize! :destroy, @food
     @food.destroy
-    if current_page?(user_food_path(@food.author_id, @food.id))
-      redirect_to user_foods_path(@food.author_id)
-    else
-      redirect_to request.referer
-    end
+    redirect_to request.referer
+  end
+
+  def food_params
+    params.permit(:name, :measurement_unit, :price, :quantity, :user_id)
   end
 end
