@@ -46,6 +46,7 @@
   text-align: center;
   vertical-align: middle;
   border: 1px solid black;
+  word-break: break-word;
 }
 
 .food-table-header {
