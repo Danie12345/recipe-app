@@ -9,18 +9,17 @@ class FoodsController < ApplicationController
   end
 
   def list
-    @foods = current_user.foods.order(:id)
-    @recipefoods = RecipeFood.where(food_id: @foods)
-    @filtered = @foods.zip(@recipefoods).to_h
+    @foods = current_user.foods.includes(:recipe_foods).order(:id)
     @data = {}
     @total_cost = 0
-    @filtered.each do |food, recipefood|
-      difference = food.quantity - recipefood.quantity
-      next unless difference.negative?
+    @foods.each do |food|
+      next if food.recipe_foods.first.nil?
+      difference = food.recipe_foods.first.quantity - food.quantity
+      next unless difference.positive?
 
-      price = -difference * food.price
+      price = difference * food.price
       @total_cost += price
-      @data[food.name] = { difference: -difference, price: }
+      @data[food.name] = { difference: difference, price:, unit: food.measurement_unit }
     end
 
     respond_to do |format|
