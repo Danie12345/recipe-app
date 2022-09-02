@@ -6,8 +6,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-user1 = User.create(name: "Mahmoud")
-user2 = User.create(name: "Daniel")
+user1 = User.new(name: "Mahmoud", email: "mahmoud@mail.com")
+user2 = User.new(name: "Daniel", email: "daniel@mail.com")
+user1.password = "123456"
+user1.password_confirmation = "123456"
+user1.confirm
+user1.save!
+user2.password = "123456"
+user2.password_confirmation = "123456"
+user2.confirm
+user2.save!
 
 recipe1 = Recipe.create(name: "Star Wars", preparation_time: 2.5, cooking_time: 1, description: "The star wars recipe description", public: true, user_id: user1.id)
 recipe2 = Recipe.create(name: "Apple pie", preparation_time: 2, cooking_time: 1, description: "The apple pie recipe description", public: true, user_id: user1.id)
