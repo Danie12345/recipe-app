@@ -38,11 +38,11 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @public_recipes = Recipe.where(public: true).order(created_at: :desc)
+    @public_recipes = Recipe.includes(%i[recipe_foods user foods]).where(public: true).order(created_at: :desc)
     @data = {}
     @public_recipes.each do |recipe|
-      @recipefoods = RecipeFood.where(recipe_id: recipe.id)
-      @foods = Food.where(id: @recipefoods).order(:id)
+      @recipefoods = recipe.recipe_foods
+      @foods = recipe.foods
       @filtered = @foods.zip(@recipefoods).to_h
       @total_cost = 0
       @filtered.each do |food, recipefood|
