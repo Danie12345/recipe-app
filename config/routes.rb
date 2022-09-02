@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "/foods", to: "foods#index"
   get "/general_shopping_list", to: "foods#list"
   resources :recipes, only: [:show]
