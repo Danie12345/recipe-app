@@ -4,6 +4,7 @@
     <%= link_to 'Foods', foods_path, class: "inventory-nav" %>
     <%= link_to 'Shopping List', foods_path, class: "shopping-list-nav" %>
     <%= link_to 'Recipes', user_recipes_path(current_user.id), class: "recipes-nav" %>
+    <%= link_to 'Create Recipe', new_user_recipe_path(current_user.id), class: "recipes-nav" %>
     <%= button_to 'Log out', destroy_user_session_path, method: :delete, data: {turbo: false}, class: "logout-nav" %>
     <%= link_to edit_user_registration_path, class: "client-username-nav" do %>
       <%= current_user.name %>
