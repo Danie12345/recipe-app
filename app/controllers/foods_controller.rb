@@ -14,12 +14,13 @@ class FoodsController < ApplicationController
     @total_cost = 0
     @foods.each do |food|
       next if food.recipe_foods.first.nil?
+
       difference = food.recipe_foods.first.quantity - food.quantity
       next unless difference.positive?
 
       price = difference * food.price
       @total_cost += price
-      @data[food.name] = { difference: difference, price:, unit: food.measurement_unit }
+      @data[food.name] = { difference:, price:, unit: food.measurement_unit }
     end
 
     respond_to do |format|

@@ -30,9 +30,9 @@ class RecipefoodsController < ApplicationController
     @recipefood = RecipeFood.find(params[:id])
     @food = Food.find(@recipefood.food_id)
     if @recipefood.update(edit_params)
-        redirect_to recipe_path(@recipe.id)
+      redirect_to recipe_path(@recipe.id)
     else
-        render 'edit'
+      render 'edit'
     end
   end
 
@@ -53,6 +53,6 @@ class RecipefoodsController < ApplicationController
   end
 
   def edit_params
-    params.require(:recipe_food).permit(:quantity, :food_id, :recipe_id)    
+    params.require(:recipe_food).permit(:quantity, :food_id, :recipe_id)
   end
 end

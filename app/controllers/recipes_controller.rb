@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
     @foods.each do |food|
       quantity = food.recipe_foods.first.quantity
       cost = quantity * food.price
-      @data[food.name] = { quantity: quantity, cost: cost, recipe_food_id: food.recipe_foods.first.id }
+      @data[food.name] = { quantity:, cost:, recipe_food_id: food.recipe_foods.first.id }
     end
   end
 
