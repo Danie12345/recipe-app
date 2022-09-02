@@ -1,6 +1,6 @@
 <% if can? :read, @recipe %>
 <div class="recipe-wrapper">
-  <h1><%= @recipe.name %></h1>
+  <h1 class="recipe-title"><%= @recipe.name %></h1>
   <div class="recipe-info-container">
     <div class="recipe-left-container">
       <p>Preparation time: <%= @recipe.preparation_time %> hours</p>
