@@ -12,7 +12,7 @@
         <td class="food-table-data"><%= vals[:quantity] %></td>
         <td class="food-table-data">$<%= vals[:cost] %></td>
         <td class="food-table-data">
-          <button>Modify</button>
+          <%= button_to "Modify", edit_user_recipe_recipefood_path(@user.id, @recipe.id, vals[:recipe_food_id]), method: :get %>
           <%= button_to "Remove", user_recipe_recipefood_path(@user.id, @recipe.id, vals[:recipe_food_id]), method: :delete %>
         </td>
       </tr>
