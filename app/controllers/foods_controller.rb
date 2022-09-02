@@ -42,7 +42,7 @@ class FoodsController < ApplicationController
         else
           flash.now[:error] = 'Food could not be added!'
         end
-        redirect_to '/inventory'
+        redirect_to '/foods'
       end
     end
   end
