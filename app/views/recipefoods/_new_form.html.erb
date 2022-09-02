@@ -1,7 +1,7 @@
 <%= form_with model: @recipefood, url: user_recipe_recipefoods_path(@user.id, @recipe.id), method: :post do |f| %>
   <div class="food-new-form">
     <div class="food-new-unit_price">
-      <%= f.label "Unit Price" %>
+      <%= f.label "Ingredient" %>
       <%= f.collection_select :food_id, @user.foods, :id, :name, include_blank: true %>
     </div>
     <div class="food-new-quantity">
