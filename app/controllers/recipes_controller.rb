@@ -5,7 +5,15 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @user = current_user
     @recipe = Recipe.find(params[:id])
+    @foods = @recipe.foods.includes(:recipe_foods).order(created_at: :desc)
+    @data = {}
+    @foods.each do |food|
+      quantity = food.recipe_foods.first.quantity
+      cost = quantity * food.price
+      @data[food.name] = { quantity:, cost:, recipe_food_id: food.recipe_foods.first.id }
+    end
   end
 
   def new

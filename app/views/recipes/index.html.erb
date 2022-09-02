@@ -3,9 +3,9 @@
 <% @recipes.each do |recipe| %>
   <div class="recipe-card">
     <div class="recipe-title-container">
-      <%= link_to user_recipe_path(recipe.user.id, recipe.id) do %>
+      <%= link_to recipe_path(recipe.id) do %>
         <h3 class="recipe-title">
-          <%= recipe.name%>
+          <%= recipe.name %>
         </h3>
       <%end%>
       <%# if can? :delete, @post %>

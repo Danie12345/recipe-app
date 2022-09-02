@@ -8,7 +8,7 @@
     <% @data.each do |name, vals| %>
       <tr class="food-table-row">
         <td class="food-table-data"><%= name %></td>
-        <td class="food-table-data"><%= vals[:difference] %></td>
+        <td class="food-table-data"><%= vals[:difference] %> <%= vals[:unit] %></td>
         <td class="food-table-data">$<%= vals[:price] %></td>
       </tr>
     <% end %>
