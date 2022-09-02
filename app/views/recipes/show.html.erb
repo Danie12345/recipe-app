@@ -1,5 +1,6 @@
 <% if can? :read, @recipe %>
-  <h1><%= @recipe.name %></h1>
+<div class="recipe-wrapper">
+  <h1 class="recipe-title"><%= @recipe.name %></h1>
   <div class="recipe-info-container">
     <div class="recipe-left-container">
       <p>Preparation time: <%= @recipe.preparation_time %> hours</p>
@@ -17,10 +18,12 @@
         <%= render "recipefoods/new_form" %>
       <% end %>
     </div>
-    <div class="recipe-table">
-      <%= render "shared/food_table", type: 'recipe' %>
-    </div>
   </div>
+
+  <div class="recipe-table">
+    <%= render "shared/food_table", type: 'recipe' %>
+  </div>
+</div>
 <% else %>
   <div>This recipe is private!</div>
 <% end %>

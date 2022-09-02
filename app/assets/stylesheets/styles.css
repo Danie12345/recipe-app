@@ -12,9 +12,20 @@ a {
   margin-bottom: 1rem;
 }
 
+.recipe-wrapper {
+  padding: 1rem 2rem;
+}
+
+.recipe-title {
+  text-align: center;
+}
+
 .recipe-info-container {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid gray;
 }
 
 .recipe-right-container {
