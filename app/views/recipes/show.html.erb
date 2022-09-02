@@ -12,6 +12,6 @@
       <label for="public">Public</label>
       <input type="checkbox" id="public" <%= 'checked' if @recipe.public %> disabled>
     </div>
-    <%= button_to 'Add ingredient', method: :get %>
+    <%= render "recipefoods/new_form" %>
   </div>
 </div>
