@@ -1,0 +1,15 @@
+<%= form_with model: @recipefood, url: user_recipe_recipefoods_path(@user.id, @recipe.id), method: :post do |f| %>
+  <div class="food-new-form">
+    <div class="food-new-unit_price">
+      <%= f.label "Unit Price" %>
+      <%= f.collection_select :food_id, @user.foods, :id, :name, include_blank: true %>
+    </div>
+    <div class="food-new-quantity">
+      <%= f.label "Quantity" %>
+      <%= f.number_field :quantity, in: 1.0..500.0, step: 0.05 %>
+    </div>
+    <div class="food-new-submit">
+      <%= f.submit 'Add Ingredient' %>
+    </div>
+  </div>
+<% end %>
