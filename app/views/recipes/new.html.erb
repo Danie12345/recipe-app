@@ -1,0 +1,14 @@
+<h1>Add new recipe</h1>
+<div class="form-container">
+  <%= form_with model: @recipe, :url => user_recipes_path(@user), class: 'new-recipe-form' do |form| %>
+    <%= form.text_field :name, required: true, autofocus: true, id: "name", autocomplete: "recipe_name", placeholder: "Recipe name" %>
+    <%= form.number_field :preparation_time, required: true, id: "preparation_time", placeholder: "Preparation time in hours", step: :any %>
+    <%= form.number_field :cooking_time, required: true, id: "cooking_time", placeholder: "Cooking time in hours", step: :any %>
+    <%= form.text_area :description, id: "description", placeholder: "Description" %>
+    <div >
+      <label for="public">Public</label>
+      <%= form.check_box :public, id: "public", checked: true %>
+    </div>
+    <%= form.submit "Save", id: 'submit' %>
+  <% end %>
+</div>

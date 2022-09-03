@@ -1,0 +1,16 @@
+<div class="navbar">
+  <%= link_to 'Home', root_path, class: "home-nav" %>
+  <% if user_signed_in? %>
+    <%= link_to 'Foods', foods_path, class: "inventory-nav" %>
+    <%= link_to 'Shopping List', general_shopping_list_path, class: "shopping-list-nav" %>
+    <%= link_to 'Recipes', user_recipes_path(current_user.id), class: "recipes-nav" %>
+    <%= link_to 'Create Recipe', new_user_recipe_path(current_user.id), class: "recipes-nav" %>
+    <%= button_to 'Log out', destroy_user_session_path, method: :delete, data: {turbo: false}, class: "logout-nav" %>
+    <%= link_to edit_user_registration_path, class: "client-username-nav" do %>
+      <%= current_user.name %>
+    <% end %>
+  <% else %>
+    <%= link_to 'Log in', new_user_session_path, class: "login-nav" %>
+    <%= link_to 'Sign up', new_user_registration_path, class: "signup-nav" %>
+  <% end %>
+</div>

@@ -1,0 +1,27 @@
+<% if !@data.empty? %>
+  <table class="food-table">
+    <tr class="food-table-row">
+      <th class="food-table-header">Food</th>
+      <th class="food-table-header">Quantity</th>
+      <th class="food-table-header">Value</th>
+      <% if can? :manage, @recipe %>
+        <th class="food-table-header">Actions</th>
+      <% end %>
+    </tr>
+    <% @data.each do |name, vals| %>
+      <tr class="food-table-row">
+        <td class="food-table-data"><%= name %></td>
+        <td class="food-table-data"><%= vals[:quantity] %></td>
+        <td class="food-table-data">$<%= vals[:cost] %></td>
+        <% if can? :manage, @recipe %>
+          <td class="food-table-data">
+            <%= button_to "Modify", edit_user_recipe_recipefood_path(@user.id, @recipe.id, vals[:recipe_food_id]), method: :get %>
+            <%= button_to "Remove", user_recipe_recipefood_path(@user.id, @recipe.id, vals[:recipe_food_id]), method: :delete %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <div>This recipe has no ingredients added. Add some in the dropdown box!</div>
+<% end %>

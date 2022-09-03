@@ -1,0 +1,31 @@
+<% if can? :read, @recipe %>
+<div class="recipe-wrapper">
+  <h1 class="recipe-title"><%= @recipe.name %></h1>
+  <div class="recipe-info-container">
+    <div class="recipe-left-container">
+      <p>Preparation time: <%= @recipe.preparation_time %> hours</p>
+      <p>Cooking time: <%= @recipe.cooking_time %> hours</p>
+      <p>Steps: <%= @recipe.description %></p>
+      <% if user_signed_in? %>
+        <%= button_to 'Generate shopping list', general_shopping_list_path(), method: :get %>
+      <% end %>
+    </div>
+
+    <div class="recipe-right-container">
+      <div>
+        <label for="public">Public</label>
+        <input type="checkbox" id="public" <%= 'checked' if @recipe.public %> disabled>
+      </div>
+      <% if can? :manage, @recipe %>
+        <%= render "recipefoods/new_form" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="recipe-table">
+    <%= render "shared/food_table", type: 'recipe' %>
+  </div>
+</div>
+<% else %>
+  <div>This recipe is private!</div>
+<% end %>
