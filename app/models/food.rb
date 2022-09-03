@@ -9,6 +9,6 @@ class Food < ApplicationRecord
   validates :quantity, numericality: true, allow_blank: false
 
   def allrecipesfoods
-    recipes_foods.order(created_at: :desc)
+    recipe_foods.order(created_at: :desc)
   end
 end
