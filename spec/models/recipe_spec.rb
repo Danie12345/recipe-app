@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Food, type: :model do
   context 'Testing Food validations and methods' do
-
     before :all do
       @user = User.new(name: 'Mahmoud', email: 'tester@gmail.com')
       @user.password = '123456'
       @user.password_confirmation = '123456'
       @user.confirm
       @user.save
-      @recipe = Recipe.new(name: 'Apple Pie', description: 'description of the recipe', cooking_time: 9.5, preparation_time: 5, user: @user)
+      @recipe = Recipe.new(name: 'Apple Pie', description: 'description of the recipe', cooking_time: 9.5,
+                           preparation_time: 5, user: @user)
       @recipe.save
     end
 

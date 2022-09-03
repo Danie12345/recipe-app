@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe "Recipes", type: :request do
+RSpec.describe 'Recipes', type: :request do
   def setup
     @controller = RecipesController.new
   end
-  let (:user) { User.create(name: 'Daniel', email: 'daniel@gmail.com') }
-  before do 
+  let(:user) { User.create(name: 'Daniel', email: 'daniel@gmail.com') }
+  before do
     sign_in(user)
     user.confirm
   end
 
-  describe "GET public_recipes" do
+  describe 'GET public_recipes' do
     before(:each) do
       get root_path
     end
 
-    it "works! (now write some real specs)" do
+    it 'works! (now write some real specs)' do
       expect(response).to have_http_status(200)
     end
 

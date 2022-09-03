@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Food, type: :model do
   context 'Testing Food validations and methods' do
-
     before :all do
       @user = User.new(name: 'Mahmoud', email: 'tester@gmail.com')
       @user.password = '123456'
@@ -28,12 +27,12 @@ RSpec.describe Food, type: :model do
     end
 
     it 'price should be a number' do
-      @food.price = "AA"
+      @food.price = 'AA'
       expect(@food).to_not be_valid
     end
 
     it 'quantity should be a number' do
-      @food.quantity = "k"
+      @food.quantity = 'k'
       expect(@food).to_not be_valid
     end
   end
