@@ -8,8 +8,9 @@ RSpec.describe Food, type: :model do
       @user.password_confirmation = '123456'
       @user.confirm
       @user.save
-      @food = Food.new(name: 'Apple', measurement_unit: 'kg', price: 9.5, quantity: 5, user: @user)
-      @food.save
+      @recipe = Recipe.new(name: 'Apple Pie', description: 'description of the recipe', cooking_time: 9.5,
+                           preparation_time: 5, user: @user)
+      @recipe.save
     end
 
     after :all do
@@ -17,23 +18,18 @@ RSpec.describe Food, type: :model do
     end
 
     it 'name should be present' do
-      @food.name = nil
-      expect(@food).to_not be_valid
+      @recipe.name = nil
+      expect(@recipe).to_not be_valid
     end
 
     it 'name must not exceed 250 characters' do
-      @food.name = 'h' * 33
-      expect(@food).to_not be_valid
+      @recipe.name = 'h' * 33
+      expect(@recipe).to_not be_valid
     end
 
-    it 'price should be a number' do
-      @food.price = 'AA'
-      expect(@food).to_not be_valid
-    end
-
-    it 'quantity should be a number' do
-      @food.quantity = 'k'
-      expect(@food).to_not be_valid
+    it 'user_id should be present' do
+      @recipe.user = nil
+      expect(@recipe).to_not be_valid
     end
   end
 end
